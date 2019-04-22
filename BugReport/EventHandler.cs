@@ -50,7 +50,7 @@ namespace BugReport
 							tcp.SendData($"player{ev.Player.Name} ({ev.Player.SteamId})");
 							tcp.SendData($"bug{ev.Command.Substring(4)}");
 							ev.ReturnMessage = "Thank you for your report, it has been sent to the developer. " +
-								"Reminder that troll reports will result in a ban from using this system.";
+								"Reminder that troll reports may result in a ban from the server.";
 						}
 						else
 						{
