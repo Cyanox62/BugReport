@@ -15,6 +15,7 @@ namespace BugReport
 	)]
 	public class Plugin : Smod2.Plugin
     {
+		public static bool isEnabled = false;
 		public static string ConfigFolerFilePath = FileManager.GetAppFolder() + "BugReport";
 
 		public override void OnEnable()
@@ -29,6 +30,8 @@ namespace BugReport
 
 		public override void Register()
 		{
+			AddConfig(new Smod2.Config.ConfigSetting("br_enabled", true, true, ""));
+
 			AddCommands(new string[] { "reportban", "rban" }, new BanCommand());
 			AddCommands(new string[] { "reportunban", "ruban" }, new UnbanCommand());
 

@@ -14,6 +14,9 @@ namespace BugReport
 		public EventHandler(Plugin plugin)
 		{
 			instance = plugin;
+			Plugin.isEnabled = instance.GetConfigBool("br_enabled");
+			if (!Plugin.isEnabled) return;
+
 			tcp = new Tcp(plugin, "127.0.0.1", 9090);
 		}
 
@@ -34,6 +37,8 @@ namespace BugReport
 
 		public void OnCallCommand(PlayerCallCommandEvent ev)
 		{
+			if (!Plugin.isEnabled) return;
+
 			if (ev.Command.ToLower().StartsWith("bug"))
 			{
 				if (tcp.isConnected)
